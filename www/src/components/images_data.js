@@ -7,7 +7,11 @@ let imagesdata =  {
 	data: {
 		mv : [
 			{name : "斗鱼福利女主播xiao沫琳激情性感诱惑",albumid : 1,length : 62 },
-			{name : "秀人熊吖BOBO翘臀销魂大尺度写真",albumid : 2,length : 20 }
+			{name : "秀人熊吖BOBO翘臀销魂大尺度写真",albumid : 2,length : 20 },
+			{name : "hip-hop性感美女刘飞儿时尚私房",albumid : 3,length : 20 },
+			{name : "性感美女艾莉整形归来女神范依旧",albumid : 4,length : 20 },
+			{name : "夏茉GIGI龙目岛旅拍性感OL装写真",albumid : 5,length : 13 },
+			{name : "气质尤物佟蔓长发及腰难掩深沟外现",albumid : 6,length : 20 },
 		],
 		gx : [
 			{name : "lkewjflwkejf", albumid : "20171203",length : 4}

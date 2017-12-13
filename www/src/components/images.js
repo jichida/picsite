@@ -6,6 +6,8 @@ import get from "lodash.get";
 import Novel from "./novel";
 import Taoke from "./taoke";
 import Loading from "./loading";
+import Footer from "./foot";
+
 
 // let showimgtimeout = null;
 // let showloadingtimeout = null;
@@ -84,7 +86,7 @@ class Page extends React.Component {
             }
             return (
                 <div className="images">
-                	<Header back={true} history={this.props.history} title={"LEESOO图片"} />
+                	<Header back={true} nav={nav} history={this.props.history} title={"LEESOO图片"} />
                     <div className="title">{albumtitle}</div>
                     <div className="showimg" onClick={this.clickpage.bind(this, day, "next", nextid)}>
                     	<img 
@@ -103,6 +105,7 @@ class Page extends React.Component {
                     <Novel />
                     <Taoke />
                     { !this.state.imageStatus && <Loading /> }
+                    <Footer />
                 </div>
             );
         }else{
@@ -115,6 +118,7 @@ class Page extends React.Component {
                     </div>
                     <Novel pageid={id} />
                     <Taoke pageid={id} />
+                    <Footer />
                 </div>
             )
         }

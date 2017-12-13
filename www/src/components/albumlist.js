@@ -26,12 +26,6 @@ class Page extends React.Component {
                     }
                     {
                         !nav && 
-                        map(imagesdata.data.pa, (v, i)=>{
-                            return (<li onClick={()=>{this.props.history.push(`/album/pa/${v.albumid}/1`)}} key={i}><div><img src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/pa/${v.albumid}/0.jpg`} /><span key={i}>{v.name}</span></div></li>)
-                        })
-                    }
-                    {
-                        !nav && 
                         map(imagesdata.data.mv, (v, i)=>{
                             return (<li onClick={()=>{this.props.history.push(`/album/mv/${v.albumid}/1`)}} key={i}><div><img src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/mv/${v.albumid}/0.jpg`} /><span key={i}>{v.name}</span></div></li>)
                         })

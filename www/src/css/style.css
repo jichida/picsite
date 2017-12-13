@@ -362,6 +362,14 @@ a, a:active{
 	font-size: 22px;
 	text-align: center;
 }
+.footer {
+	background: #fa5879;
+	padding: 15px;
+}
+.footer p{
+	text-align: center;
+	color: #FFF;
+}
 @-webkit-keyframes weuiLoading {
     0% {
         transform: rotate3d(0, 0, 1, 0deg);

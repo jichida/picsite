@@ -17,7 +17,7 @@ class Page extends React.Component {
 	render() {
         return (
             <div className="header">
-            	{ !!this.props.back && <a className="back" onClick={()=>{this.props.history.push("/")}}></a>}
+            	{ !!this.props.back && <a className="back" onClick={()=>{this.props.history.push(`/navmain/${this.props.nav}`)}}></a>}
                 <span>{this.props.title}</span>
                 <a onClick={this.shownav.bind(this, "show")} className="navlnk"></a>
                 <div className={this.state.shownavclass}>
