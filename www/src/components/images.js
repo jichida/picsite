@@ -93,6 +93,7 @@ class Page extends React.Component {
                             src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${id}.${imgtp}`}
                             onLoad={this.handleImageLoaded.bind(this)}
                             onError={this.handleImageErrored.bind(this)}
+                            alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
                             />
                     </div>
                     <div className="showbtn">
