@@ -10,7 +10,7 @@ class Page extends React.Component {
 		let nav = this.props.match.params.nav;
         return (
             <div className="index">
-                <Header title={"LEESOO图片"} />
+                <Header title={"LEESONG图片"} />
                 <Albumlist history={this.props.history} nav={nav} />
                 <Footer />
             </div>
