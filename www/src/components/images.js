@@ -95,6 +95,15 @@ class Page extends React.Component {
                             onError={this.handleImageErrored.bind(this)}
                             alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
                             />
+                        { id < imageslength && 
+                        <img 
+                            src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${parseInt(id)+1}.${imgtp}`}
+                            onLoad={this.handleImageLoaded.bind(this)}
+                            onError={this.handleImageErrored.bind(this)}
+                            alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
+                            style={{display: "none"}}
+                            />
+                        }
                     </div>
                     <div className="showbtn">
     					<span className={provid?"i lnk":"i"} onClick={this.clickpage.bind(this, day, "prov", provid)}>上一页</span>
