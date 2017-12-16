@@ -86,7 +86,7 @@ class Page extends React.Component {
             }
             return (
                 <div className="images">
-                	<Header back={true} nav={nav} history={this.props.history} title={"LEESOO图片"} />
+                	<Header back={true} nav={nav} history={this.props.history} title={"LEESONG图片"} />
                     <div className="title">{albumtitle}</div>
                     <div className="showimg" onClick={this.clickpage.bind(this, day, "next", nextid)}>
                         <img 
