@@ -7,7 +7,7 @@ import Novel from "./novel";
 import Taoke from "./taoke";
 import Loading from "./loading";
 import Footer from "./foot";
-
+// import LazyLoad from 'react-lazyload';
 
 // let showimgtimeout = null;
 // let showloadingtimeout = null;
@@ -89,7 +89,7 @@ class Page extends React.Component {
                 	<Header back={true} nav={nav} history={this.props.history} title={"LEESOO图片"} />
                     <div className="title">{albumtitle}</div>
                     <div className="showimg" onClick={this.clickpage.bind(this, day, "next", nextid)}>
-                    	<img 
+                        <img 
                             src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${id}.${imgtp}`}
                             onLoad={this.handleImageLoaded.bind(this)}
                             onError={this.handleImageErrored.bind(this)}
