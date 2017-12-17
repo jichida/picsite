@@ -1,5 +1,6 @@
 import React from 'react';
 import map from "lodash.map";
+import reverse from "lodash.reverse";
 import imagesdata from "./images_data";
 import LazyLoad from 'react-lazyload';
 
@@ -30,11 +31,14 @@ class Page extends React.Component {
 	render() {
         let nav = this.props.nav;
         let height = this.state.imgheight;
+        let newmv = imagesdata.data.mv;
+        let newpa = imagesdata.data.pa;
+        let newgx = imagesdata.data.gx;
         return (
             <div className="albumlist">
             	<ul>
 	                {   nav === "mv" &&
-	                	map(imagesdata.data.mv, (v, i)=>{
+	                	map(newmv, (v, i)=>{
 							return (<li onClick={()=>{this.props.history.push(`/album/mv/${v.albumid}/1`)}} key={i}>
                                 <div>
                                 
@@ -43,36 +47,35 @@ class Page extends React.Component {
                                     src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/mv/${v.albumid}/0.jpg`}
                                     alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" />
                                 </LazyLoad>
-
-                                <span key={i}>{v.name}</span></div></li>)
+                                <span key={i}>{`第${v.albumid}期:${v.name}`}</span></div></li>)
 	                	})
 	               	}
                     {   nav === "pa" &&
-                        map(imagesdata.data.pa, (v, i)=>{
+                        map(newpa, (v, i)=>{
                             return (<li onClick={()=>{this.props.history.push(`/album/pa/${v.albumid}/1`)}} key={i}><div>
                                 <LazyLoad height={height}>
                                 <img alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/pa/${v.albumid}/0.jpg`} />
                                 </LazyLoad>
-                                <span key={i}>{v.name}</span></div></li>)
+                                <span key={i}>{`第${v.albumid}期`}</span></div></li>)
                         })
                     }
                     {   nav === "gx" &&
-                        map(imagesdata.data.gx, (v, i)=>{
+                        map(newgx, (v, i)=>{
                             return (<li onClick={()=>{this.props.history.push(`/album/gx/${v.albumid}/1`)}} key={i}><div>
                                 <LazyLoad height={height}>
                                 <img alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/gx/${v.albumid}/0.jpg`} />
                                 </LazyLoad>
-                                <span key={i}>{v.name}</span></div></li>)
+                                <span key={i}>{`第${v.albumid}期`}</span></div></li>)
                         })
                     }
                     {
                         !nav && 
-                        map(imagesdata.data.mv, (v, i)=>{
+                        map(newmv, (v, i)=>{
                             return (<li onClick={()=>{this.props.history.push(`/album/mv/${v.albumid}/1`)}} key={i}><div>
                                 <LazyLoad height={height}>
                                 <img alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/mv/${v.albumid}/0.jpg`} />
                                 </LazyLoad>
-                                <span key={i}>{v.name}</span></div></li>)
+                                <span key={i}>{`第${v.albumid}期`}</span></div></li>)
                         })
                     }
                </ul>

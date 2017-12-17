@@ -40,7 +40,6 @@ class Page extends React.Component {
     clickpage =(d, tp, i)=>{
          // window.clearTimeout(showloadingtimeout);
         if(this.state.imageStatus){
-            this.setState({ imageStatus: false });
             let nav = this.props.match.params.nav;
             let imagesmap = {};
             map(imagesdata.data[nav], (v, i)=>{
@@ -50,6 +49,7 @@ class Page extends React.Component {
             if(imageslist){
                 let imageslength = imageslist.length;
                 if(i){
+                    this.setState({ imageStatus: false });
                     if(i>imageslength){
                         d = parseInt(d)+1;
                         i = 1;
@@ -74,9 +74,9 @@ class Page extends React.Component {
         map(imagesdata.data[nav], (v, i)=>{
             imagesmap[v.albumid] = v;
         })
-        let imageslist = get(imagesmap,this.props.match.params.day,false);
+        let imageslist = get(imagesmap,day,false);
         if(imageslist){
-            albumtitle = imageslist.name;
+            albumtitle = `第${day}期`;
             let imageslength = imageslist.length;
             let nextid = parseInt(this.props.match.params.id)+1;
             let provid = parseInt(this.props.match.params.id)-1;
@@ -121,7 +121,7 @@ class Page extends React.Component {
         }else{
             return (
                 <div className="images">
-                    <Header back={true} history={this.props.history} title={"LEESOO图片"} />
+                    <Header back={true} nav={nav} history={this.props.history} title={"LEESOO图片"} />
                     <div className="homelinkdiv">
                         <span style={{lineHeight : "40px", color: "#999", display: "block", fontSize: "22px"}}>没有更多图片了</span>
                         <a href="/" className="homelink">返回首页</a>

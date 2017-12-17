@@ -14,7 +14,7 @@ let imagesdata =  {
 			{name : "气质尤物佟蔓长发及腰难掩深沟外现",albumid : 6,length : 20 },
 		],
 		gx : [
-			{name : "lkewjflwkejf", albumid : "20171203",length : 4}
+			{name : "",albumid : "20171203",length : 4},
 		],
 		pa : [
 			{ name : "男女后入式啪啪啪抖奶动态图", albumid : "1", length : 10 },
