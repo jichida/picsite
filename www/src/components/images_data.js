@@ -2,7 +2,7 @@ let imagesdata =  {
 	nav: {
 		mv : "性感美女",
 		gx : "搞笑动图",
-		pa : "PaPa动图"
+		pa : "邪恶动图"
 	},
 	data: {
 		mv : [
