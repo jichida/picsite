@@ -56,7 +56,7 @@ class Page extends React.Component {
                                 <LazyLoad height={height}>
                                 <img alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/pa/${v.albumid}/0.jpg`} />
                                 </LazyLoad>
-                                <span key={i}>{`第${v.albumid}期`}</span></div></li>)
+                                <span key={i}>{`邪恶动图第${v.albumid}期`}</span></div></li>)
                         })
                     }
                     {   nav === "gx" &&

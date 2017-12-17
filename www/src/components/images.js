@@ -76,7 +76,9 @@ class Page extends React.Component {
         })
         let imageslist = get(imagesmap,day,false);
         if(imageslist){
-            albumtitle = `第${day}期`;
+            if(nav ==="pa"){albumtitle = `邪恶第${day}期`;}
+            if(nav ==="mv"){albumtitle = `美女第${day}期`;}
+            if(nav ==="gx"){albumtitle = `搞笑第${day}期`;}
             let imageslength = imageslist.length;
             let nextid = parseInt(this.props.match.params.id)+1;
             let provid = parseInt(this.props.match.params.id)-1;
