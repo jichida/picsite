@@ -7,6 +7,9 @@ import Novel from "./novel";
 import Taoke from "./taoke";
 import Loading from "./loading";
 import Footer from "./foot";
+import Discribe from "./describe";
+import * as Scroll from 'react-scroll';
+let scroll = Scroll.animateScroll;
 // import LazyLoad from 'react-lazyload';
 
 // let showimgtimeout = null;
@@ -28,7 +31,7 @@ class Page extends React.Component {
     handleImageErrored() {
         this.setState({ imageStatus: true });
     }
-
+    //document.body.scrollTop
     componentDidMount(){
         // let nav = this.props.match.params.nav;
         // let day = this.props.match.params.day;
@@ -64,6 +67,8 @@ class Page extends React.Component {
     }
 
 	render() {
+        // document.body.scrollTop;
+        scroll.scrollToTop();
         // window.clearTimeout(showimgtimeout);
         // showimgtimeout = window.setTimeout(()=>{this.setState({ imageStatus: true });},500);
         let day = this.props.match.params.day;
@@ -86,26 +91,37 @@ class Page extends React.Component {
             if(provid<1){
                 provid = false;
             }
+
+            let imgurl = `http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${id}.${imgtp}`;
+            let loadurl = `http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${parseInt(id)+1}.${imgtp}`;
+            let imgid = 0;
+            if(nav==="gx"){
+                imgid = (parseInt(day)-1)*10+parseInt(id);
+                imgurl = `http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${imgid}.gif`;
+                loadurl = `http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${imgid+1}.gif`;
+            }
+
             return (
                 <div className="images">
                 	<Header back={true} nav={nav} history={this.props.history} title={"LEESONG图片"} />
                     <div className="title">{albumtitle}</div>
                     <div className="showimg" onClick={this.clickpage.bind(this, day, "next", nextid)}>
                         <img 
-                            src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${id}.${imgtp}`}
+                            src={imgurl}
                             onLoad={this.handleImageLoaded.bind(this)}
                             onError={this.handleImageErrored.bind(this)}
                             alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
                             />
                         { id < imageslength && 
                         <img 
-                            src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/${nav}/${day}/${parseInt(id)+1}.${imgtp}`}
+                            src={loadurl}
                             onLoad={this.handleImageLoaded.bind(this)}
                             onError={this.handleImageErrored.bind(this)}
                             alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
                             style={{display: "none"}}
                             />
                         }
+                        { nav==="gx" && <p style={{padding:"10px"}}>{Discribe.gx[imgid-1]}</p> }
                     </div>
                     <div className="showbtn">
     					<span className={provid?"i lnk":"i"} onClick={this.clickpage.bind(this, day, "prov", provid)}>上一页</span>

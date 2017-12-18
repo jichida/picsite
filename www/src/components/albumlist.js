@@ -3,6 +3,7 @@ import map from "lodash.map";
 import reverse from "lodash.reverse";
 import imagesdata from "./images_data";
 import LazyLoad from 'react-lazyload';
+import Novelall from './novelall';
 
 let resizetimecontent = null;
 class Page extends React.Component {
@@ -61,12 +62,17 @@ class Page extends React.Component {
                     }
                     {   nav === "gx" &&
                         map(newgx, (v, i)=>{
+                            let img0name = i==0?`1`:`${i}1`;
                             return (<li onClick={()=>{this.props.history.push(`/album/gx/${v.albumid}/1`)}} key={i}><div>
                                 <LazyLoad height={height}>
-                                <img alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/gx/${v.albumid}/0.jpg`} />
+                                <img alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" src={`http://yinuonet-img.oss-cn-beijing.aliyuncs.com/gx/${v.albumid}/${img0name}.gif`} width={height} height={height} />
                                 </LazyLoad>
                                 <span key={i}>{`第${v.albumid}期`}</span></div></li>)
                         })
+                    }
+                    {
+                        nav === "xs" &&
+                        <Novelall />
                     }
                     {
                         !nav && 
@@ -78,6 +84,7 @@ class Page extends React.Component {
                                 <span key={i}>{`第${v.albumid}期:`}{v.name}</span></div></li>)
                         })
                     }
+
                </ul>
                <div className="showmore">资源每天更新，敬请期待...</div>
             </div>

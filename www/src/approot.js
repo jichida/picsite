@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Router, Route } from 'react-router-dom';
 import App from './components/index';
+import Novelall from './components/novelall';
 import Images from './components/images';
 import createBrowserHistory from 'history/createBrowserHistory'
 const customHistory = createBrowserHistory()
@@ -16,6 +17,7 @@ const AppRoot = (props) => {
             <div className="container">
                 <Route exact path="/" component={App} />
                 <Route exact path="/navmain/:nav" component={App} />
+                <Route exact path="/novelall" component={App} />
                 <Route path="/album/:nav/:day/:id" component={Images} />
             </div>
         </Router>
