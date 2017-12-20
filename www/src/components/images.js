@@ -131,7 +131,7 @@ class Page extends React.Component {
     					<span className={nextid?"i lnk":"i"} onClick={this.clickpage.bind(this, day, "next", nextid)}>下一页</span>
                     </div>
                     <Novel />
-                    <Taoke />
+                    
                     { !this.state.imageStatus && <Loading /> }
                     <Footer />
                 </div>
@@ -145,7 +145,7 @@ class Page extends React.Component {
                         <a href="/" className="homelink">返回首页</a>
                     </div>
                     <Novel pageid={id} />
-                    <Taoke pageid={id} />
+                    
                     <Footer />
                 </div>
             )
