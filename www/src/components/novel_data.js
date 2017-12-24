@@ -1,5 +1,31 @@
 let noveldata =  [
 	{
+		name : "荒岛上，我舆眾美女昼夜狂欢....",
+		url : "https://w.contiez.com/lmaid/77317"
+	},
+	{
+		name : "隔壁俏寡妇晚上偷偷摸摸到我房间，让我帮她…",
+		url : "https://w.scenery7.com/lmaid/77316"
+	},
+	{
+		name : "哥，我下面又湿又洋，你塞进来好不好...",
+		url : "https://w.scenery7.com/lmaid/77319"
+	},
+	{
+		name : "今晚我一定会捅破你的丝袜，从后面进去～！爽死你",
+		url : "https://w.contiez.com/lmaid/77321"
+	},
+	{
+		name : "女保姆脱衣勾引我上身，太刺激了～！",
+		url : "https://w.contiez.com/lmaid/77324"
+	},
+	{
+		name : "我轻轻的舔舐，令她瘫软直不起身子！任我为所欲为....",
+		url : "https://w.scenery7.com/lmaid/77325"
+	},
+	
+
+	{
 		name : "22岁男大学生刚毕业就睡了朋友的老婆，还成了亿万富翁！",
 		url : "https://w.contiez.com/lmaid/68319"
 	},

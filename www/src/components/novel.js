@@ -22,7 +22,7 @@ class Page extends React.Component {
 	}
 
 	componentWillMount(){
-		this.getRandomArrayElements(noveldata, 6);
+		this.getRandomArrayElements(noveldata, 8);
 	}
 
 	render() {
