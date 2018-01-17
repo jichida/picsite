@@ -1,4 +1,4 @@
-let imagesdata =  {
+exports.imagesdata =  {
 	nav: [
 		{name: "mv" , txt:  "性感美女"},
 		{name: "gx" , txt:  "搞笑动图"},
@@ -137,4 +137,3 @@ let imagesdata =  {
 		]
 	}
 }
-export default imagesdata;

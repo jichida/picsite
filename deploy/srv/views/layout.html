@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+        <meta name="baidu-site-verification" content="4VMCoLZIwC" />
+        <meta name="keywords" content="GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式,抖奶,性感,艳照">
+        <meta name="description" content="GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式,抖奶,性感,艳照">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <script src="/javascripts/jquery.min.js"></script>
+        <script src="/javascripts/jquery.lazyload.js"></script>
+        <title>LEESONG图片</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <span>LEESONG图片</span>
+                <% if(!!back){ %>
+                <a class="back" href="/navmain/<%= urlnav%>"></a>
+                <% } else {%>
+                <a class="shownav navlnk"></a>
+                <% } %>
+                <div class="leftnav">
+                    <div class="navwamp">
+                        <div class="t">导航</div>
+                        <% for(var i=0; i < datanav.length; i++){ %>
+                            <div><a href="/navmain/<%= datanav[i].name%>"><%= datanav[i].txt%></a></div>
+                        <% } %>
+                    </div>
+                    <div class="bgwamp"></div>
+                </div>
+            </div>
+            <%- body %>
+            <div class="footer">
+                <p>©2011-2017 www.leesong.cn</p>
+                <p>免责声明：本站部分资源来源于网络，如有侵权或违规，请发邮件给我们，我们将会尽快处理</p>
+                <p>邮箱地址：kilkiss@163.com</p>
+            </div>
+        </div>
+
+    </body>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?623f72bc5d719dc035701da7c725bcf0";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+        $(function(){
+            var leftnav = $(".leftnav");
+            $(".bgwamp").click(function(){
+                leftnav.removeClass("shownav");
+                leftnav.addClass("hidenav");
+            });
+            $(".navlnk").click(function(){
+                leftnav.removeClass("hidenav");
+                leftnav.addClass("shownav");
+            });
+        })
+    </script>
+</html>

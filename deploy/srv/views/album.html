@@ -1,0 +1,47 @@
+<!--
+datanav : imgdata.imagesdata.nav,
+urlnav: urlnav,
+albumid: albumid,
+imgname: imgname,
+imgalmlist : imgdata.imagesdata.data[urlnav],
+-->
+
+<div class="images">
+    <div class="title"><%= albumtitle%></div>
+	
+	<% if(albumid<=imgalmlist.length){%>
+
+    <div class="showimg">
+        <a href="<%= nextlnk%>">
+        	<img 
+	            src="<%= imgurl%>"
+	            alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
+	            />
+        </a>
+        
+
+        <div class="showbtn">
+        	<% if(!!provid){ %>
+			<a class="<%= provclass%>" href="<%= provlnk%>">上一页</a>
+			<% }else{ %>
+			<a class="<%= provclass%>">上一页</a>
+			<% } %>
+			<span class="i c">
+                <b><%= imgname%></b>/<b><%= albumlength%></b>
+            </span>
+			<a class="i lnk" href="<%= nextlnk%>">下一页</a>
+        </div>
+    </div>
+    <img 
+        src="<%= nexturl%>"
+        alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
+        style="display: none"
+        />
+
+	<% } else{%>
+    <div className="homelinkdiv">
+        <span style="line-height : 40px, color: #999, display: block, font-size: 22px">没有更多图片了</span>
+        <a href="/navmain/<%= urlnav%>/" className="homelink">返回首页</a>
+    </div>
+    <% }%>
+</div>

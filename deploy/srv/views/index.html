@@ -1,0 +1,75 @@
+<div class="index">
+
+	<div class="albumlist">
+    	<ul>
+    		<% for(var i=0; i < imgalmlist.length; i++){ %>
+    			<% 
+    				var filename = "";
+    				var listtitle = "";
+    				var imgurl = "";
+    				var img0name = "";
+    				// 
+    				if(urlnav==="mv"||urlnav==="pa"){
+    					img0name = "1";
+						filename = "1.jpg";
+    				}
+    				if(urlnav==="gx"){
+						img0name = i==0?"1":(i+"1");
+						filename = img0name+".gif";
+    				}
+					if(urlnav==="mv"){
+						listtitle = "第"+imgalmlist[i].albumid+"期:"+imgalmlist[i].name;
+					}
+					if(urlnav==="pa"){
+						listtitle = "邪恶动图第"+(i+1)+"期－(10张)";
+					}
+					if(urlnav==="gx"){
+						listtitle = "搞笑动图第"+(i+1)+"期－(10张)";
+					}
+					imgurl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/"+urlnav+"/"+imgalmlist[i].albumid+"/"+filename;	
+    			%>
+	            <li>
+	            	<div>
+	            		<a href="/album/<%= urlnav%>/<%= imgalmlist[i].albumid%>/<%= img0name%>">
+			                <img 
+			                	src="<%= imgurl%>" 
+			                	alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" 
+			                	class="lazy" 
+			                	height="200"
+			                	id="<%= urlnav%>_<%= imgalmlist[i].albumid%>_<%= filename%>"
+			                	/>
+		                	<span>
+		                		<%= listtitle%>
+		                	</span>
+	                	</a>
+	                </div>
+	            </li>
+            <% } %>
+       	</ul>
+       	<div class="showmore">资源每天更新，敬请期待...</div>
+    </div>
+</div>
+<script>
+	$(function(){
+		$("img.lazy").lazyload();
+		var leftnav = $(".leftnav");
+		$(".bgwamp").click(function(){
+			leftnav.removeClass("shownav");
+			leftnav.addClass("hidenav");
+		});
+		$(".navlnk").click(function(){
+			leftnav.removeClass("hidenav");
+			leftnav.addClass("shownav");
+		});
+		$("img.lazy").each(function(){
+			$(this).click(function(){
+				var id = $(this).attr("id");
+				var arrid = id.split("_");
+				var urlnav = arrid[0];
+				var albumid = arrid[1];
+				var filename = arrid[2];
+
+			})
+		})
+	})
+</script>

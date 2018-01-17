@@ -3,8 +3,48 @@ services:
   nginx:
       image: nginx
       restart: always
+      expose:
+         - "80"
       ports:
-          - "80:8080"
+          - "80:80"
       volumes:
           - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
           - ./dist:/usr/share/nginx/html
+      network_mode: "host"
+      depends_on:
+        - appserver
+  appserver:
+    image: node:6.11.2
+    restart: always
+    command: /usr/bin/node ./index.js
+    working_dir: /app
+    volumes:
+      - ./srv:/app
+      - ./dist/log:/dist/log
+      - ./dist/public:/dist/public
+      - ./dist/uploader:/dist/uploader
+      - /usr/lib/node_modules/phantomjs/lib/phantom/bin:/usr/lib/node_modules/phantomjs/lib/phantom/bin
+      - /usr/share/fonts:/usr/share/fonts
+      - /usr/bin:/usr/bin
+    network_mode: "host"
+    environment:
+      - MONGO_URL=mongodb://tmcatuser:tmcat159@127.0.0.1/tmcat
+      - rooturl=http://magicalcat.codemao.cn
+      - listenport=3005
+    ports:
+       - "3005:3005"
+    expose:
+       - "3005"
+  mongodb:
+    image:  mongo:3.4
+    restart: always
+    expose:
+       - "27017"
+    volumes:
+       - "/var/db100/dbdata:/data/db -d"
+    ports:
+       - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=15961125167
+    command: mongod --auth
