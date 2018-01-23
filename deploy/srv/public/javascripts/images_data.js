@@ -31,8 +31,6 @@ exports.imagesdata =  {
 			{ name : "", albumid : "14", length : 10 },
 			{ name : "", albumid : "15", length : 10 },
 			{ name : "", albumid : "16", length : 10 },
-			// { name : "", albumid : "15", length : 10 },
-			// { name : "", albumid : "16", length : 10 },
 			// { name : "", albumid : "17", length : 10 },
 			// { name : "", albumid : "18", length : 10 },
 			// { name : "", albumid : "19", length : 10 },

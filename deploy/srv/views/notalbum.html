@@ -13,4 +13,17 @@ imgalmlist : imgdata.imagesdata.data[urlnav],
         <a href="/navmain/<%= urlnav%>/" class="homelink">返回首页</a>
     </div>
 
+    <div class="novellist">
+        <a name="novellnk"></a>
+        <div class="title">
+            <span>大家都在看</span>
+            <a href="#novellnk" onclick="location.reload()">换一批</a>
+        </div>
+        <ul>
+            <% for(var i=0; i < noveldata.length; i++){ %>
+                <li><a href="<%= noveldata[i].url%>" target="_blank"><%= noveldata[i].name%></a></li>
+            <% } %>
+        </ul>
+    </div>
+
 </div>

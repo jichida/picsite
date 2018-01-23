@@ -19,7 +19,10 @@ imgalmlist : imgdata.imagesdata.data[urlnav],
 	            />
         </a>
         
-
+        <% if(urlnav==="gx"){ %>
+            <div style="padding-top:10px;padding-bottom: 10px;"><%= gx_describe[gx_url_imgname-1]%></div>
+        <% } %>
+        
         <div class="showbtn">
             <% if(urlnav==="gx"){ imgname = imgname%10; }%>
             <% if(imgname===0){ imgname = 10; }%>
@@ -60,4 +63,5 @@ imgalmlist : imgdata.imagesdata.data[urlnav],
         <a href="/navmain/<%= urlnav%>/" className="homelink">返回首页</a>
     </div>
     <% }%>
+    
 </div>

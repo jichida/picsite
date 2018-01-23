@@ -7,5 +7,7 @@ router.get('/', Index.index);
 router.get('/navmain/:nav', Index.navmain);
 router.get('/album/:nav/:albumid/:imgname', Index.album);
 router.get('/notalbum/:nav', Index.notalbum);
+router.get('/novel', Index.novel);
+
 
 module.exports = router;

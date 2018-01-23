@@ -1,5 +1,6 @@
 var imgdata = require('../public/javascripts/images_data.js');
 var novellist = require('../public/javascripts/novel_data.js');
+var describe = require('../public/javascripts/describe.js');
 //首页
 exports.index = function(req, res){
 	// console.log(imgdata.imagesdata.data.mv);
@@ -28,16 +29,42 @@ exports.navmain = function(req, res){
 }
 //没有更多图片了
 exports.notalbum = function(req, res){
+	var shuffled = novellist.noveldata.slice(0);
+	var ii = novellist.noveldata.length;
+	var min_i = ii - 10;
+	var temp_i;
+	var index_i;
+    while (ii -- > min_i) {
+        index_i = Math.floor((ii + 1) * Math.random());
+        temp_i = shuffled[index_i];
+        shuffled[index_i] = shuffled[ii];
+        shuffled[ii] = temp_i;
+    }
+    var noveldata = shuffled.slice(min_i);
 	// console.log(imgdata.imagesdata.data.mv);
 	var urlnav = req.params.nav;//获取id
 	var renders = {
 		datanav : imgdata.imagesdata.nav,
 		urlnav: urlnav,
 		imgalmlist : imgdata.imagesdata.data[urlnav], 
+		noveldata: noveldata,
 		layout : true,
 		back: true,
 	}
 	res.render('notalbum.html',renders);
+}
+//小说列表 novel
+exports.novel = function(req, res){
+	// console.log(imgdata.imagesdata.data.mv);
+	var urlnav = req.params.nav;//获取id
+	var renders = {
+		datanav : imgdata.imagesdata.nav,
+		urlnav: urlnav,
+		noveldata : novellist.noveldata, 
+		layout : true,
+		back: false,
+	}
+	res.render('novel.html',renders);
 }
 //图片详情页
 exports.album = function(req, res){
@@ -62,7 +89,7 @@ exports.album = function(req, res){
     }
 
     console.log("noveldata.noveldata");
-    console.log(novellist);
+    console.log(describe.describe.gx);
 
 	var title = albumname[urlnav]+"第"+albumid+"期";
 	var imgbaseurl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/";
@@ -70,6 +97,7 @@ exports.album = function(req, res){
 	var nexturl = "";
 	var nextlnk = "";//
 	var provlnk = "";//
+	var gx_url_imgname = "";
 
 	if(urlnav==="mv"){
 		imgurl = imgbaseurl+urlnav+"/"+albumid+"/"+imgname+".jpg";
@@ -116,11 +144,16 @@ exports.album = function(req, res){
 
 		if(!!provid){provlnk = "/album/gx/"+albumid+"/"+provid;}
 
-		if(nextid>10){
-			nextid = 1;
+		var nalbumid = Math.floor(url_nextid/10)+1;
+		if(url_nextid%10===0 && parseInt(url_nextid)!==0){
+			nalbumid = Math.floor(url_nextid/10);
 		}
 
-		nextlnk = "/album/gx/"+(Math.floor(url_nextid/10)+1)+"/"+nextid;
+		nextlnk = "/album/gx/"+nalbumid+"/"+nextid;
+
+		if(nextid>10){
+			nextlnk = "/album/gx/"+nalbumid+"/1";
+		}
 		// if(url_nextid%10 > imgalmlist[parseInt(albumid)-1].length){
 		// 	nextlnk = "/album/gx/"+(parseInt(albumid)+1)+"/1";
 		// }
@@ -128,9 +161,18 @@ exports.album = function(req, res){
 		// console.log(imgalmlist);
 		// console.log(parseInt(albumid)+1);
 
+		console.log("parseInt(albumid)+1");
+		console.log(url_imgname);
+		// console.log(parseInt(albumid)+1);
+		// console.log(parseInt(imgalmlist.length));
+		// console.log(parseInt(nextid));
+		// console.log(parseInt(imgalmlist[parseInt(albumid)-1].length));
+
 		if(parseInt(albumid)+1>imgalmlist.length && nextid > imgalmlist[parseInt(albumid)-1].length){
 			nextlnk = "/notalbum/"+urlnav;
 		}
+
+		gx_url_imgname = url_imgname;
 	}
 
 	var shuffled = novellist.noveldata.slice(0);
@@ -166,7 +208,9 @@ exports.album = function(req, res){
 		albumlength : imgalmlist[parseInt(albumid)-1].length, 
 		provclass : provclass,
 		noveldata: noveldata,
-		layout : true
+		layout : true,
+		gx_describe: describe.describe.gx,
+		gx_url_imgname : gx_url_imgname,
 	}
 	
 	res.render('album.html',renders);
