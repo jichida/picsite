@@ -9,13 +9,18 @@
     				var imgurl = "";
     				var img0name = "";
     				// 
-    				if(urlnav==="mv"||urlnav==="pa"){
+    				if(urlnav==="mv"){
     					img0name = "1";
 						filename = "1.jpg";
     				}
+    				if(urlnav==="pa"){
+    					img0name = "1";
+						filename = "0.jpg";
+    				}
     				if(urlnav==="gx"){
-						img0name = i==0?"1":(i+"1");
-						filename = img0name+".gif";
+						img0name = 1;
+						var s = i==0?"1":(i+"1")
+						filename = s+".gif";
     				}
 					if(urlnav==="mv"){
 						listtitle = "第"+imgalmlist[i].albumid+"期:"+imgalmlist[i].name;
@@ -34,8 +39,7 @@
 			                <img 
 			                	src="<%= imgurl%>" 
 			                	alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式" 
-			                	class="lazy" 
-			                	height="200"
+			                	class="lazy"
 			                	id="<%= urlnav%>_<%= imgalmlist[i].albumid%>_<%= filename%>"
 			                	/>
 		                	<span>
@@ -62,12 +66,16 @@
 			leftnav.addClass("shownav");
 		});
 		$("img.lazy").each(function(){
+			var innwidth = window.innerWidth;
+			if(innwidth>720){innwidth=720}
+			$(this).css("height", ((innwidth-30)/2)+"px");
 			$(this).click(function(){
 				var id = $(this).attr("id");
 				var arrid = id.split("_");
 				var urlnav = arrid[0];
 				var albumid = arrid[1];
 				var filename = arrid[2];
+
 
 			})
 		})

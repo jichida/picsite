@@ -1,4 +1,5 @@
 var imgdata = require('../public/javascripts/images_data.js');
+var novellist = require('../public/javascripts/novel_data.js');
 //首页
 exports.index = function(req, res){
 	// console.log(imgdata.imagesdata.data.mv);
@@ -60,31 +61,91 @@ exports.album = function(req, res){
     	provclass = "i";
     }
 
+    console.log("noveldata.noveldata");
+    console.log(novellist);
+
 	var title = albumname[urlnav]+"第"+albumid+"期";
-	var imgurl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/";
+	var imgbaseurl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/";
+	var imgurl = "";
 	var nexturl = "";
 	var nextlnk = "";//
 	var provlnk = "";//
-	
-
 
 	if(urlnav==="mv"){
-		imgurl = imgurl+urlnav+"/"+albumid+"/"+imgname+".jpg";
-		nexturl = imgurl+urlnav+"/"+albumid+"/"+nextid+".jpg";
+		imgurl = imgbaseurl+urlnav+"/"+albumid+"/"+imgname+".jpg";
+		nexturl = imgbaseurl+urlnav+"/"+albumid+"/"+nextid+".jpg";
 		if(!!provid){provlnk = "/album/mv/"+albumid+"/"+provid;}
 		nextlnk = "/album/mv/"+albumid+"/"+nextid;
 		if(nextid > imgalmlist[parseInt(albumid)-1].length){
 			nexturl = "";
 			nextlnk = "/album/mv/"+(parseInt(albumid)+1)+"/1";
 		}
-		console.log("sdqdwqwdqwd");
-		console.log(imgalmlist);
-		console.log(parseInt(albumid)+1);
+		if(parseInt(albumid)+1>imgalmlist.length && nextid > imgalmlist[parseInt(albumid)-1].length){
+			nextlnk = "/notalbum/"+urlnav;
+		}
+	}
+	if(urlnav==="pa"){
+		imgurl = imgbaseurl+urlnav+"/"+albumid+"/"+imgname+".gif";
+		nexturl = imgbaseurl+urlnav+"/"+albumid+"/"+nextid+".gif";
+		if(!!provid){provlnk = "/album/pa/"+albumid+"/"+provid;}
+		nextlnk = "/album/pa/"+albumid+"/"+nextid;
+		if(nextid > imgalmlist[parseInt(albumid)-1].length){
+			nexturl = "";
+			nextlnk = "/album/pa/"+(parseInt(albumid)+1)+"/1";
+		}
 
 		if(parseInt(albumid)+1>imgalmlist.length && nextid > imgalmlist[parseInt(albumid)-1].length){
 			nextlnk = "/notalbum/"+urlnav;
 		}
 	}
+	if(urlnav==="gx"){
+		var url_imgname = (parseInt(albumid)-1)*10+parseInt(imgname);
+		
+		var url_nextid = parseInt(url_imgname)+1;
+    	var url_provid = parseInt(url_imgname)-1;
+
+    	// console.log("url_nextid");
+    	// console.log(albumid);
+    	// console.log(url_nextid);
+    	// console.log(url_provid);
+    	// console.log(nextid%10);
+    	// console.log(imgalmlist[parseInt(albumid)-1].length);
+
+		imgurl = imgbaseurl+urlnav+"/"+albumid+"/"+url_imgname+".gif";
+		nexturl = imgbaseurl+urlnav+"/"+albumid+"/"+url_nextid+".gif";
+
+		if(!!provid){provlnk = "/album/gx/"+albumid+"/"+provid;}
+
+		if(nextid>10){
+			nextid = 1;
+		}
+
+		nextlnk = "/album/gx/"+(Math.floor(url_nextid/10)+1)+"/"+nextid;
+		// if(url_nextid%10 > imgalmlist[parseInt(albumid)-1].length){
+		// 	nextlnk = "/album/gx/"+(parseInt(albumid)+1)+"/1";
+		// }
+		// console.log("sdqdwqwdqwd");
+		// console.log(imgalmlist);
+		// console.log(parseInt(albumid)+1);
+
+		if(parseInt(albumid)+1>imgalmlist.length && nextid > imgalmlist[parseInt(albumid)-1].length){
+			nextlnk = "/notalbum/"+urlnav;
+		}
+	}
+
+	var shuffled = novellist.noveldata.slice(0);
+	var ii = novellist.noveldata.length;
+	var min_i = ii - 10;
+	var temp_i;
+	var index_i;
+    while (ii -- > min_i) {
+        index_i = Math.floor((ii + 1) * Math.random());
+        temp_i = shuffled[index_i];
+        shuffled[index_i] = shuffled[ii];
+        shuffled[ii] = temp_i;
+    }
+    var noveldata = shuffled.slice(min_i);
+
 
 	// imgurl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/"+urlnav+"/"+albumid+"/"+filename;
 	// nexturl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/"+urlnav+"/"+albumid+"/"+filename;
@@ -104,6 +165,7 @@ exports.album = function(req, res){
 		imgalmlist : imgalmlist, 
 		albumlength : imgalmlist[parseInt(albumid)-1].length, 
 		provclass : provclass,
+		noveldata: noveldata,
 		layout : true
 	}
 	

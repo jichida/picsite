@@ -21,6 +21,8 @@ imgalmlist : imgdata.imagesdata.data[urlnav],
         
 
         <div class="showbtn">
+            <% if(urlnav==="gx"){ imgname = imgname%10; }%>
+            <% if(imgname===0){ imgname = 10; }%>
         	<% if(!!provid){ %>
 			<a class="<%= provclass%>" href="<%= provlnk%>">上一页</a>
 			<% }else{ %>
@@ -32,6 +34,20 @@ imgalmlist : imgdata.imagesdata.data[urlnav],
 			<a class="i lnk" href="<%= nextlnk%>">下一页</a>
         </div>
     </div>
+
+    <div class="novellist">
+        <a name="novellnk"></a>
+        <div class="title">
+            <span>大家都在看</span>
+            <a href="#novellnk" onclick="location.reload()">换一批</a>
+        </div>
+        <ul>
+            <% for(var i=0; i < noveldata.length; i++){ %>
+                <li><a href="<%= noveldata[i].url%>" target="_blank"><%= noveldata[i].name%></a></li>
+            <% } %>
+        </ul>
+    </div>
+
     <img 
         src="<%= nexturl%>"
         alt="美女,写真,GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式"
