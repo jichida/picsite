@@ -11,6 +11,7 @@ exports.index = function(req, res){
 		urlnav : "mv",
 		layout : true,
 		back: false,
+		title: "性感美女 美女私房照 宅男福利"
 	}
 	res.render('index.html',renders);
 }
@@ -18,12 +19,19 @@ exports.index = function(req, res){
 exports.navmain = function(req, res){
 	// console.log(imgdata.imagesdata.data.mv);
 	var urlnav = req.params.nav;//获取id
+	var titledata = {
+		mv : "清纯美女 性感美女 童颜巨乳 宅男福利 私房照",
+		pa : "啪啪啪动态图 撸管图 邪恶动态图 后入式动态图 gif动态图 动态福利图 李毅吧动态图",
+		gx : "搞笑动态图",
+	}
+
 	var renders = {
 		datanav : imgdata.imagesdata.nav,
 		urlnav: urlnav,
 		imgalmlist : imgdata.imagesdata.data[urlnav], 
 		layout : true,
 		back: false,
+		title: titledata[urlnav]
 	}
 	res.render('index.html',renders);
 }
@@ -50,6 +58,7 @@ exports.notalbum = function(req, res){
 		noveldata: noveldata,
 		layout : true,
 		back: true,
+		title: "清纯美女 性感美女 童颜巨乳 宅男福利 私房照 啪啪啪动态图 撸管图 邪恶动态图 后入式动态图 gif动态图 动态福利图 李毅吧动态图 搞笑动态图"
 	}
 	res.render('notalbum.html',renders);
 }
@@ -63,6 +72,7 @@ exports.novel = function(req, res){
 		noveldata : novellist.noveldata, 
 		layout : true,
 		back: false,
+		title: "魅力小说 网络小说 言情小说 穿越小说 色色的小说 性感小说"
 	}
 	res.render('novel.html',renders);
 }
@@ -98,6 +108,7 @@ exports.album = function(req, res){
 	var nextlnk = "";//
 	var provlnk = "";//
 	var gx_url_imgname = "";
+	var titles = '';
 
 	if(urlnav==="mv"){
 		imgurl = imgbaseurl+urlnav+"/"+albumid+"/"+imgname+".jpg";
@@ -188,6 +199,17 @@ exports.album = function(req, res){
     }
     var noveldata = shuffled.slice(min_i);
 
+    if(urlnav === "pa"){
+		titles = imgalmlist[albumid-1].name+"第"+imgname+"张";
+    }
+    if(urlnav === "mv"){
+		titles = imgalmlist[albumid-1].name+"第"+imgname+"张";
+		title = titles;
+    }
+    if(urlnav === "gx"){
+		titles = describe.describe.gx[gx_url_imgname-1];
+    }
+
 
 	// imgurl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/"+urlnav+"/"+albumid+"/"+filename;
 	// nexturl = "http://yinuonet-img.oss-cn-beijing.aliyuncs.com/"+urlnav+"/"+albumid+"/"+filename;
@@ -211,6 +233,7 @@ exports.album = function(req, res){
 		layout : true,
 		gx_describe: describe.describe.gx,
 		gx_url_imgname : gx_url_imgname,
+		title: titles
 	}
 	
 	res.render('album.html',renders);
