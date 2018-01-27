@@ -394,3 +394,17 @@ a, a:active{
 .hzlnk img{
 	width: 100%;
 }
+.bottomlnk{
+	line-height: 40px;
+	margin: 15px 0;
+	margin-bottom: 15px;
+	
+}
+.bottomlnk a{
+	color: #FFF;
+	background: #fa5879;
+	display: block;
+	text-align: center;
+	border-radius: 6px;
+	border: 1px solid #c8435e;
+}

@@ -8,30 +8,45 @@ exports.index = function(req, res){
 	var renders = {
 		datanav : imgdata.imagesdata.nav,
 		imgalmlist : imgdata.imagesdata.data.mv, 
+		keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀",
+		description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照",
 		urlnav : "mv",
 		layout : true,
 		back: false,
-		title: "性感美女 美女私房照 宅男福利"
+		title: "性感美女"
 	}
 	res.render('index.html',renders);
 }
+
+//keywords
+//GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式,抖奶,性感,艳照
+//description
+//
 //某相册首页
 exports.navmain = function(req, res){
 	// console.log(imgdata.imagesdata.data.mv);
 	var urlnav = req.params.nav;//获取id
 	var titledata = {
-		mv : "清纯美女 性感美女 童颜巨乳 宅男福利 私房照",
-		pa : "啪啪啪动态图 撸管图 邪恶动态图 后入式动态图 gif动态图 动态福利图 李毅吧动态图",
+		mv : "性感美女",
+		pa : "邪恶动图",
 		gx : "搞笑动态图",
+	}
+
+	var description  = {
+		mv : "清纯美女 性感美女 童颜巨乳 宅男福利 私房照",
+		pa : "撸管图 后入式动态图 动态福利图 李毅吧动态图 GIF 邪恶GIF 番号 求出处 老司机 动态图 撸管图 邪恶动态图 papa 后入式 抖奶",
+		gx : "搞笑动图",
 	}
 
 	var renders = {
 		datanav : imgdata.imagesdata.nav,
-		urlnav: urlnav,
+		keywords : description[urlnav],
+		description : description[urlnav],
+		urlnav : urlnav,
 		imgalmlist : imgdata.imagesdata.data[urlnav], 
 		layout : true,
-		back: false,
-		title: titledata[urlnav]
+		back : false,
+		title : titledata[urlnav]
 	}
 	res.render('index.html',renders);
 }
@@ -58,7 +73,9 @@ exports.notalbum = function(req, res){
 		noveldata: noveldata,
 		layout : true,
 		back: true,
-		title: "清纯美女 性感美女 童颜巨乳 宅男福利 私房照 啪啪啪动态图 撸管图 邪恶动态图 后入式动态图 gif动态图 动态福利图 李毅吧动态图 搞笑动态图"
+		keywords : "啪啪啪动态图 撸管图 邪恶动态图 后入式动态图 gif动态图",
+		description : "清纯美女 性感美女 童颜巨乳 宅男福利 私房照 啪啪啪动态图 撸管图 邪恶动态图 后入式动态图 gif动态图 动态福利图 李毅吧动态图 搞笑动态图",
+		title: "没有更多图片了"
 	}
 	res.render('notalbum.html',renders);
 }
@@ -72,6 +89,8 @@ exports.novel = function(req, res){
 		noveldata : novellist.noveldata, 
 		layout : true,
 		back: false,
+		keywords : "魅力小说 性感小说 成人小说",
+		description : "魅力小说 网络小说 言情小说 穿越小说 色色的小说 性感小说",
 		title: "魅力小说 网络小说 言情小说 穿越小说 色色的小说 性感小说"
 	}
 	res.render('novel.html',renders);
@@ -90,6 +109,13 @@ exports.album = function(req, res){
 		gx: "搞笑动图",
 		mv: "美女图片",
 	}
+
+	var titledata = {
+		mv : "亚洲美女 性感美女 性感美臀 童颜巨乳 女神私房照",
+		pa : "求出处 老司机 翘臀 三点式 爱爱图 动态图 撸管图 邪恶动态图 papa 后入式 抖奶",
+		gx : "搞笑动态图",
+	}
+
 	var nextid = parseInt(imgname)+1;
     var provid = parseInt(imgname)-1;
     var provclass = "i lnk";
@@ -233,6 +259,8 @@ exports.album = function(req, res){
 		layout : true,
 		gx_describe: describe.describe.gx,
 		gx_url_imgname : gx_url_imgname,
+		keywords : titledata[urlnav],
+		description : titledata[urlnav],
 		title: titles
 	}
 	
