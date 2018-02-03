@@ -1,16 +1,24 @@
 var imgdata = require('../public/javascripts/images_data.js');
 var novellist = require('../public/javascripts/novel_data.js');
 var describe = require('../public/javascripts/describe.js');
+var flattendeep = require("lodash.flattendeep");
+var sortby = require("lodash.sortby");
+
 //首页
 exports.index = function(req, res){
 	// console.log(imgdata.imagesdata.data.mv);
 	// var id = req.params.id;//获取id
+	var imgalmlist = [imgdata.imagesdata.data.pa, imgdata.imagesdata.data.mv];
+	// imgalmlist.push(imgdata.imagesdata.data.gx);
+	imgalmlist = flattendeep(imgalmlist);
+	imgalmlist = sortby(imgalmlist, ["albumid"]);
+	console.log(imgalmlist);
 	var renders = {
 		datanav : imgdata.imagesdata.nav,
-		imgalmlist : imgdata.imagesdata.data.mv, 
-		keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀",
-		description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照",
-		urlnav : "mv",
+		imgalmlist : imgalmlist, 
+		keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀 后入式动态图 动态福利图 李毅吧动态图 动态图 撸管图 邪恶动态图 papa xxoo",
+		description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照 撸管图 邪恶动态图 papa xxoo",
+		urlnav : "",
 		layout : true,
 		back: false,
 		title: "性感美女"
@@ -48,7 +56,7 @@ exports.navmain = function(req, res){
 		back : false,
 		title : titledata[urlnav]
 	}
-	res.render('index.html',renders);
+	res.render('main.html',renders);
 }
 //没有更多图片了
 exports.notalbum = function(req, res){

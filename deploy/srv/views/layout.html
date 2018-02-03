@@ -25,10 +25,14 @@
                     <div class="navwamp">
                         <div class="t">导航</div>
                         <% for(var i=0; i < datanav.length; i++){ %>
-                            <% if(datanav[i].name!=="xs"){ %>
-                            <div><a href="/navmain/<%= datanav[i].name%>"><%= datanav[i].txt%></a></div>
+                            <% if(datanav[i].name==="index"){ %>
+                                <div><a href="/"><%= datanav[i].txt%></a></div>
                             <% }else{ %>
-                            <div><a href="/novel"><%= datanav[i].txt%></a></div>
+                                <% if(datanav[i].name!=="xs"){ %>
+                                <div><a href="/navmain/<%= datanav[i].name%>"><%= datanav[i].txt%></a></div>
+                                <% }else{ %>
+                                <div><a href="/novel"><%= datanav[i].txt%></a></div>
+                                <% } %>
                             <% } %>
                         <% } %>
                     </div>
