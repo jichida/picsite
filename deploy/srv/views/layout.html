@@ -17,19 +17,19 @@
             <div class="header">
                 <span>LEESONG图片</span>
                 <% if(!!back){ %>
-                <a class="back" href="/navmain/<%= urlnav%>"></a>
+                <a class="back" href="/album/<%= urlnav%>"></a>
                 <% } else {%>
                 <a class="shownav navlnk"></a>
                 <% } %>
                 <div class="leftnav">
                     <div class="navwamp">
-                        <div class="t">导航</div>
+                        <div class="t"><a href="/album">导航</a></div>
                         <% for(var i=0; i < datanav.length; i++){ %>
                             <% if(datanav[i].name==="index"){ %>
                                 <div><a href="/"><%= datanav[i].txt%></a></div>
                             <% }else{ %>
                                 <% if(datanav[i].name!=="xs"){ %>
-                                <div><a href="/navmain/<%= datanav[i].name%>"><%= datanav[i].txt%></a></div>
+                                <div><a href="/album/<%= datanav[i].name%>"><%= datanav[i].txt%></a></div>
                                 <% }else{ %>
                                 <div><a href="/novel"><%= datanav[i].txt%></a></div>
                                 <% } %>

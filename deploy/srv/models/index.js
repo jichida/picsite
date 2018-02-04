@@ -21,7 +21,7 @@ exports.index = function(req, res){
 		urlnav : "",
 		layout : true,
 		back: false,
-		title: "性感美女"
+		title: "性感美女邪恶动态图啪啪啪动图xxoo动图"
 	}
 	res.render('index.html',renders);
 }
@@ -102,6 +102,18 @@ exports.novel = function(req, res){
 		title: "魅力小说 网络小说 言情小说 穿越小说 色色的小说 性感小说"
 	}
 	res.render('novel.html',renders);
+}
+//小说列表 novel
+exports.albumindex = function(req, res){
+	var renders = {
+		datanav : imgdata.imagesdata.nav,
+		keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀 后入式动态图 动态福利图 李毅吧动态图 动态图 撸管图 邪恶动态图 papa xxoo",
+		description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照 撸管图 邪恶动态图 papa xxoo",
+		layout : true,
+		back: false,
+		title: "性感美女邪恶动态图啪啪啪动图xxoo动图"
+	}
+	res.render('albumindex.html',renders);
 }
 //图片详情页
 exports.album = function(req, res){

@@ -79,6 +79,16 @@ a, a:active{
     overflow: hidden;
     white-space: nowrap;
 }
+
+.albumindex.albumlist ul li{
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 10px;
+} 
+.albumindex.albumlist ul li img{
+	border: 3px solid #fa5879;
+}
 .images .showimg img{
 	width: 100%;
 }
