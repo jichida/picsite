@@ -4,7 +4,9 @@ import { Switch, Router, Route } from 'react-router-dom';
 import App from './components/index';
 import Novelall from './components/novelall';
 import Images from './components/images';
+import Baiyue from './components/baiyue'  
 import createBrowserHistory from 'history/createBrowserHistory'
+
 const customHistory = createBrowserHistory()
 /*
 	/  					首页          ／网站首页，展示相册列表，每一个相册的首张图片
@@ -19,6 +21,7 @@ const AppRoot = (props) => {
                 <Route exact path="/navmain/:nav" component={App} />
                 <Route exact path="/novelall" component={App} />
                 <Route path="/album/:nav/:day/:id" component={Images} />
+                <Route path="/baiyue/:id" component={Baiyue} />
             </div>
         </Router>
     );

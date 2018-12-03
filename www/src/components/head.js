@@ -19,15 +19,9 @@ class Page extends React.Component {
             <div className="header">
             	
                 <span>{this.props.title}</span>
-                <a onClick={this.shownav.bind(this, "show")} className="navlnk"></a>
                 <div className={this.state.shownavclass}>
                 	<div className="navwamp">
 	                	<div className="t">导航</div>
-						{
-							map(imagesdata.nav, (v, i)=>{
-								return (<div key={i}><a href={`/navmain/${i}`}>{v}</a></div>)	
-							})
-						}
 					</div>
 					<div className="bgwamp" onClick={this.shownav.bind(this, "hidden")}></div>
                 </div>
