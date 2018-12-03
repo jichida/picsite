@@ -12,6 +12,7 @@ class Page extends React.Component {
             <div className="index">
                 <Header title={"LEESONG图片"} />
                 <Albumlist history={this.props.history} nav={nav} />
+                <a href="javascript:window.location.href='weixin://'">wfwefe</a>
                 <Footer />
             </div>
         );

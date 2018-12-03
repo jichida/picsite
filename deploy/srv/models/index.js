@@ -3,6 +3,7 @@ var novellist = require('../public/javascripts/novel_data.js');
 var describe = require('../public/javascripts/describe.js');
 var flattendeep = require("lodash.flattendeep");
 var sortby = require("lodash.sortby");
+var request = require('request');
 
 //首页
 exports.index = function(req, res){
@@ -12,18 +13,38 @@ exports.index = function(req, res){
 	// imgalmlist.push(imgdata.imagesdata.data.gx);
 	imgalmlist = flattendeep(imgalmlist);
 	imgalmlist = sortby(imgalmlist, ["albumid"]);
-	console.log(imgalmlist);
-	var renders = {
-		datanav : imgdata.imagesdata.nav,
-		imgalmlist : imgalmlist, 
-		keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀 后入式动态图 动态福利图 李毅吧动态图 动态图 撸管图 邪恶动态图 papa xxoo",
-		description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照 撸管图 邪恶动态图 papa xxoo",
-		urlnav : "",
-		layout : true,
-		back: false,
-		title: "性感美女邪恶动态图啪啪啪动图xxoo动图"
-	}
-	res.render('index.html',renders);
+	request('https://wx.1024.ink/api/5c050974c6e12', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            console.log(imgalmlist);
+			var renders = {
+				datanav : imgdata.imagesdata.nav,
+				imgalmlist : imgalmlist, 
+				keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀 后入式动态图 动态福利图 李毅吧动态图 动态图 撸管图 邪恶动态图 papa xxoo",
+				description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照 撸管图 邪恶动态图 papa xxoo",
+				urlnav : "",
+				layout : true,
+				back: false,
+				title: "性感美女邪恶动态图啪啪啪动图xxoo动图"
+			}
+			res.render('index.html',renders);
+        }else{
+        	console.log(imgalmlist);
+			var renders = {
+				datanav : imgdata.imagesdata.nav,
+				imgalmlist : imgalmlist, 
+				keywords : "美女 宅男女生 巨乳 爆乳 童颜巨乳 私房照 大尺度 美臀 后入式动态图 动态福利图 李毅吧动态图 动态图 撸管图 邪恶动态图 papa xxoo",
+				description : "美女私房照 清纯美女 性感美女 童颜巨乳 宅男福利 私房照 撸管图 邪恶动态图 papa xxoo",
+				urlnav : "",
+				layout : true,
+				back: false,
+				title: "性感美女邪恶动态图啪啪啪动图xxoo动图"
+			}
+			res.render('index.html',renders);
+        }
+    })
+
+	
 }
 
 //keywords
