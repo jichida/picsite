@@ -47,6 +47,21 @@ exports.index = function(req, res){
 	
 }
 
+//json
+exports.json = function(req, res){
+	return [
+		{id : 0, title : "测试数据001",content : "测试数据001内容部分"}
+		{id : 1, title : "测试数据002",content : "测试数据002内容部分"}
+		{id : 2, title : "测试数据003",content : "测试数据003内容部分"}
+		{id : 3, title : "测试数据004",content : "测试数据004内容部分"}
+		{id : 4, title : "测试数据005",content : "测试数据005内容部分"}
+		{id : 5, title : "测试数据006",content : "测试数据006内容部分"}
+		{id : 6, title : "测试数据007",content : "测试数据007内容部分"}
+		{id : 7, title : "测试数据008",content : "测试数据008内容部分"}
+		{id : 8, title : "测试数据009",content : "测试数据009内容部分"}
+	]
+}
+
 //keywords
 //GIF,GIF出处,电影GIF,美女GIF,邪恶GIF,番号,求出处,老司机,动态图,撸管图,邪恶动态图,papa,后入式,抖奶,性感,艳照
 //description
