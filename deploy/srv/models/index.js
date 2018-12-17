@@ -49,7 +49,7 @@ exports.index = function(req, res){
 
 //json
 exports.json = function(req, res){
-	return [
+	var json = [
 		{id : 0, title : "测试数据001",content : "测试数据001内容部分"},
 		{id : 1, title : "测试数据002",content : "测试数据002内容部分"},
 		{id : 2, title : "测试数据003",content : "测试数据003内容部分"},
@@ -60,6 +60,8 @@ exports.json = function(req, res){
 		{id : 7, title : "测试数据008",content : "测试数据008内容部分"},
 		{id : 8, title : "测试数据009",content : "测试数据009内容部分"}
 	]
+	req.write(json);
+  	req.end();
 }
 
 //keywords
